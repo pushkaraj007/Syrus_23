@@ -29,10 +29,6 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [false],
   },
-  edition: {
-    type: String,
-    required: [false],
-  },
   publication: {
     type: String,
     required: [false],
@@ -41,6 +37,16 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [false],
   },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    required: true
+  },
+  seller: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true
+  }
 });
 
 const Product = mongoose.model("Product", productSchema);
