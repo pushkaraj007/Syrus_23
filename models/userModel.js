@@ -18,7 +18,12 @@ const userSchema = new mongoose.Schema({
   contact: {
     type: Number,
     required: [true, "Please provide a contact number"],
-  }
+  },
+  cart: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+    required: false
+  }]
 });
 
 const User = mongoose.model("User", userSchema);

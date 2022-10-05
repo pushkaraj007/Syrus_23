@@ -11,6 +11,12 @@ const Product = require('./models/productModel');
 const ChatRoom = require('./models/chatRoomModel');
 const Message = require('./models/messagesModel');
 const Category = require('./models/categoryModel');
+const Coupon = require('./models/couponModel');
+const PaytmChecksum = require("./PaytmChecksum");
+const {v4:uuidv4} = require("uuid");
+const formidable = require("formidable");
+require("dotenv").config();
+
 mongoose.connect('mongodb+srv://shree:uNczDvUQmO2ivhSB@cluster0.qikchv4.mongodb.net/?retryWrites=true&w=majority');
 
 app.post('/register',async (req,res)=>{
@@ -68,7 +74,6 @@ app.post('/product/new',async (req,res)=>{
 app.post('/product/update',async (req,res)=>{
     try{
         const product = await Product.findOneAndUpdate({_id: req.body.id},{$set: { image: req.body.image }});
-        console.log(await (await product.populate("category")).populate("seller"))
         res.json({ status : 'ok'});
     }catch(err){
         res.json({status: 'error',error: err})
@@ -85,37 +90,164 @@ app.get('/categories',async(req,res)=>{
     }
 })
 
-// async function createCategory(n){
-//     const cat1 = await Category.create({name: n})
-//     console.log(cat1);
-// }
+app.get('/products',async(req,res)=>{
+    try{
+        var prod = await Product.find().limit(6);
+        res.json({ status : 'ok',products: prod});
+    }
+    catch(err){
+        console.log(err);
+    }
+})
 
-// createCategory("fiction");
-// createCategory("engineering");
+app.get('/products/:user',async(req,res)=>{
+    try{
+        var user = await User.findOne({email: req.params.user});
+        var prod = await Product.find({seller: user._id});
+        res.json({ status : 'ok',products: prod});
+    }
+    catch(err){
+        console.log(err);
+    }
+})
 
-// app.post('/chat/message',async(req,res)=>{
-//     try{
-//         var room;
-//         room = await ChatRoom.findOne({_id:req.body.seller+req.body.user});
-//         if(!room){
-//             const data = JSON.stringify({
-//                 chatroomid: req.body.seller+req.body.user,
-//                 messages: []
-//             })
-//             room = await ChatRoom.create(data);
-//         }
-//         const msg = JSON.stringify({
-//             message: req.body.message,
-//             owner: req.body.owner
-//         })
-//         const mid = await Message.create(msg);
-//         ChatRoom.updateOne({ _id: room._id }, { "$push": { "messages": mid._id } });
-//     }
-//     catch(err){
-//         console.log(err);
-//     }
-// })
+app.post('/product/details',async (req,res)=>{
+    try{
+        const pro = await Product.findOne({_id: req.body.id}).populate("category").populate("seller");
+        res.json({ status : 'ok',details: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
 
+app.post('/product/remove',async (req,res)=>{
+    try{
+        const pro = await Product.findOneAndRemove({_id: req.body.id});
+        res.json({ status : 'ok',details: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/cart/add',async (req,res)=>{
+    try{
+        const pro = await User.updateOne(
+            { email: req.body.user },
+            { $push: { cart: req.body.id } }
+         );
+        res.json({ status : 'ok',details: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/cart/get',async (req,res)=>{
+    try{
+        const pro = await User.findOne({ email: req.body.user }).populate('cart');
+        //  const items = await pro.populate("cart")
+        res.json({ status : 'ok',items: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/cart/remove',async (req,res)=>{
+    try{
+        // const p = await Product.findOne({})
+        const pro = await User.updateOne({ email: req.body.user },{ $pull: {cart: req.body.id } }).populate('cart');
+        //  const items = await pro.populate("cart")
+        res.json({ status : 'ok',items: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/coupon/new',async (req,res)=>{
+    try{
+        const user = await User.findOne({email: req.body.to});
+        req.body.to = user._id;
+        const pro = await Coupon.create(req.body);
+        res.json({ status : 'ok',details: pro});
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/coupon/verify',async (req,res)=>{
+    try{
+        const user = await User.findOne({email: req.body.user});
+        const coupon = await Coupon.findOne({name: req.body.coupon,to: user._id,product: req.body.id});
+        if(coupon){
+        res.json({ status : 'true',coupon: coupon});
+        }
+        else{
+            res.json({status: 'false'});
+        }
+    }
+    catch(err){
+        res.json({status: 'error',error: err})
+    }
+})
+
+app.post('/api/payment',async(req,res)=>{
+    const {user,amount} = req.body;
+    const usr = await User.findOne({email: user})
+    var paytmParams = {};
+    
+    /* initialize an array */
+    paytmParams["MID"] = process.env.Merchant_ID;
+    paytmParams["WEBSITE"] = process.env.Website;
+    paytmParams["CHANNEL_ID"] = process.env.Channel_ID;
+    paytmParams["INDUSTRY_TYPE_ID"] = process.env.Industry_Type;
+    paytmParams["CUST_ID"] = usr.email;
+    paytmParams["ORDER_ID"] = uuidv4();
+    paytmParams["TXN_AMOUNT"] = amount;
+    paytmParams["CALLBACK_URL"] = 'http://localhost:5000/api/callback';
+    paytmParams["EMAIL"] = usr.email;
+    paytmParams["MOBILE_NO"] = usr.contact.toString();
+    console.log(paytmParams["ORDER_ID"]);
+    
+    /**
+    * Generate checksum by parameters we have
+    * Find your Merchant Key in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+    */
+    var paytmChecksum = PaytmChecksum.generateSignature(paytmParams, process.env.Merchant_Key);
+    paytmChecksum.then(function(checksum){
+        let params = {
+            ...paytmParams,"CHECKSUMHASH": checksum
+        }
+        res.json({params: params})
+    }).catch(function(error){
+        console.log(error);
+    });
+    })
+    
+    app.post('/api/callback',(req,res)=>{
+        const form = new formidable.IncomingForm();
+        form.parse(req,(err,fields,file)=>{
+            
+    
+            /* import checksum generation utility */
+    
+    var Checksum = fields.CHECKSUMHASH;
+    delete fields.CHECKSUMHASH; 
+    
+    var isVerifySignature = PaytmChecksum.verifySignature(fields, process.env.MERCHANT_KEY, Checksum);
+    if (isVerifySignature) {
+        console.log("Checksum Matched");
+        console.log(fields);
+        res.redirect('http://localhost:3000/thankyou');
+    } else {
+        console.log("Checksum Mismatched");
+    }
+        })
+    })
 
 app.listen(5000,()=>{
     console.log('server started');
