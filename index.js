@@ -241,13 +241,42 @@ app.post('/api/payment',async(req,res)=>{
     var isVerifySignature = PaytmChecksum.verifySignature(fields, process.env.MERCHANT_KEY, Checksum);
     if (isVerifySignature) {
         console.log("Checksum Matched");
-        console.log(fields);
+        if(fields.STATUS === 'TXN_SUCCESS' && fields.RESPMSG==='Txn Success'){
         res.redirect('http://localhost:3000/thankyou');
+        }
+        else{
+            res.redirect('http://localhost:3000/fail');
+        }
     } else {
         console.log("Checksum Mismatched");
+        res.redirect('http://localhost:3000/fail')
     }
         })
     })
+
+    app.get('/category/:cat',async(req,res)=>{
+        try{
+            const cat = req.params.cat;
+            const category = await Category.findOne({name: cat});
+            var prod = await Product.find({category: category._id});
+            res.json({ status : 'ok',products: prod, category: cat});
+        }
+        catch(err){
+            console.log(err);
+        }
+    })
+
+    app.get('/search/:key',async(req,res)=>{
+        try{
+            const key = req.params.key;
+            var prod = await Product.find({ $text: { $search: key } });
+            res.json({ status : 'ok',products: prod});
+        }
+        catch(err){
+            console.log(err);
+        }
+    })
+
 
 app.listen(5000,()=>{
     console.log('server started');
