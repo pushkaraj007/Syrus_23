@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const crypto = require('crypto-js');
+const crpt = require("crypto")
 const User = require('./models/userModel');
 const mongoose = require('mongoose');
 app.use(cors());
@@ -12,9 +13,11 @@ const ChatRoom = require('./models/chatRoomModel');
 const Message = require('./models/messagesModel');
 const Category = require('./models/categoryModel');
 const Coupon = require('./models/couponModel');
-const PaytmChecksum = require("./PaytmChecksum");
+const PaytmChecksum = require("./utils/PaytmChecksum");
+const sendEmail = require("./utils/sendEmail");
 const {v4:uuidv4} = require("uuid");
 const formidable = require("formidable");
+const Token = require('./models/tokenModel');
 require("dotenv").config();
 
 mongoose.connect('mongodb+srv://shree:uNczDvUQmO2ivhSB@cluster0.qikchv4.mongodb.net/?retryWrites=true&w=majority');
@@ -22,8 +25,17 @@ mongoose.connect('mongodb+srv://shree:uNczDvUQmO2ivhSB@cluster0.qikchv4.mongodb.
 app.post('/register',async (req,res)=>{
     try{
         req.body.password = crypto.AES.encrypt(JSON.stringify(req.body.password), 'my-secret-key@123').toString();
-        const user = await User.create(req.body)
+        const user = await User.create(req.body);
+        const t = await Token.create({userId: user._id,token: uuidv4()});
+        console.log(t);
+        const r = await  sendEmail(t,user);
+        if(r.status == 'ok'){
+            console.log('mailsent')
         res.json({ status : 'ok'})
+        }
+        else{
+            throw 'Email Not Valid';
+        }
     }catch(err){
         res.json({status: 'error',error: err})
     }
@@ -33,7 +45,7 @@ app.post('/login',async (req,res) => {
     const user = await User.findOne({
         email: req.body.email
     })
-    if(user){
+    if(user && user.verified==true){
     var bytes = crypto.AES.decrypt(user.password, 'my-secret-key@123');
     var decryptedData = JSON.parse(bytes.toString(crypto.enc.Utf8));
     if(req.body.password === decryptedData){
@@ -44,11 +56,14 @@ app.post('/login',async (req,res) => {
         return res.status(200).json({status:'ok',user:token})
     }
     else{
-        return res.status(300).json({status:'error',user:null})
+        return res.status(300).json({status:'Invalid Password',user:null})
     }
+    }
+    else if(user && user.verified === false){
+        return res.status(300).json({status:'User Not Verified'})
     }
     else{
-        return res.status(300).json({status:'error',user:null})
+        return res.status(300).json({status:'User Not Registered'})
     }
 });
 
@@ -277,6 +292,23 @@ app.post('/api/payment',async(req,res)=>{
         }
     })
 
+    app.get("/email",async(req,res)=>{
+        const r = await  sendEmail({token: '12345'},'shree');
+        res.json(r);
+    })
+
+app.get("/verify/:t",async(req,res)=>{
+    try {
+        const t = req.params.t;
+        console.log(t);
+        const token = await Token.findOne({token: t});
+        console.log(token);
+        const user = await User.findOneAndUpdate({_id: token.userId},{$set: { verified: true }});
+        res.json({status: 'verified'});
+    } catch (error) {
+        res.json({status: 'Not verified'});
+    }
+})
 
 app.listen(5000,()=>{
     console.log('server started');

@@ -23,7 +23,11 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",
     required: false
-  }]
+  }],
+  verified: {
+    type: Boolean,
+    default: false
+  },
 });
 
 const User = mongoose.model("User", userSchema);
