@@ -47,7 +47,7 @@ const productSchema = new mongoose.Schema({
     ref: "User",
     required: true
   }
-});
+},{timestamps:true});
 
 productSchema.index({ "title": "text", "description": "text", "category": "text" });
 
