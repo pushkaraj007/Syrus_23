@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
     return (
         <div class="container-xxl bg-white p-0">
-  
-  
+
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="index.html" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
