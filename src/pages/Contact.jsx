@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function Contact() {
   return (
     <div class="container-xxl bg-white p-0">
@@ -205,3 +206,6 @@ export default function Contact() {
     </div>
   )
 }
+
+
+export default Contact
