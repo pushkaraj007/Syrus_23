@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #FE5D37;
+    --primary: #007bff;
     --light: #FFF5F3;
     --dark: #103741;
 }
@@ -247,7 +247,7 @@ h6,
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    color: rgba(255, 255, 255, .5);
+    color: #007bff;
 }
 
 
