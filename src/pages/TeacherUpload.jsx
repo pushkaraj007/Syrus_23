@@ -3,7 +3,6 @@ import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
-import style from "./TeacherUpload.module.css";
 
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
