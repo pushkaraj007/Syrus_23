@@ -15,6 +15,9 @@
     };
     spinner();
 
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
 
     // Sticky Navbar
     $(window).scroll(function () {

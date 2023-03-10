@@ -11,6 +11,7 @@ import TeacherAbout from "./pages/TeacherAbout";
 import TeacherClass from "./pages/TeacherClass";
 import TeacherHome from "./pages/TeacherHome";
 import TeacherUpload from "./pages/TeacherUpload";
+import Test from "./pages/Test";
 // import Voice from "./pages/Voice";
 
 const annyang = require("annyang");
@@ -53,7 +54,6 @@ function App() {
     <div>
       <div
         style={{
-          position: "float",
           position: "sticky",
           zIndex: "10000",
           top: "20px",
@@ -67,19 +67,20 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/classes" element={<Classes />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/teacherhome" element={<TeacherHome />} />
-          <Route path="/teacherabout" element={<TeacherAbout />} />
-          <Route path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
-          <Route path="/detailsartsanddraw" element={<Details />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/classes" element={<Classes />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/appointment" element={<Appointment />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/teacherhome" element={<TeacherHome />} />
+          <Route exact path="/teacherabout" element={<TeacherAbout />} />
+          <Route exact path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
+          <Route exact path="/details/:std/:sub/:top" element={<Details />} />
 
           {/* <Route path="/voice" element={<Voice />} /> */}
 
           <Route path="/teacherclasses" element={<TeacherClass />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useCookies } from 'react-cookie';
-import { useParams } from 'react-router-dom';
-
+import { useParams } from "react-router-dom";
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
     const { std,sub } = useParams();

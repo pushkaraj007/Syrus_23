@@ -1,15 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 
 const Details = () => {
-
+    const { std,sub,top } = useParams();
     const [point, setPoint] = useState(0);
-
+    const [details, setDetails] = useState([]);
     function rewardPoint() {
         setPoint(point + 1);
         console.log("Point rewarded! Total points: " + (point + 1));
 
     }
 
+    async function getDetails() {
+        const res = await fetch('http://localhost:5000/details', {
+            method: 'POST',
+            body: JSON.stringify({ standard:std, subject:sub, topic:top }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+        const data = await res.json();
+        console.log(data.data);
+        setDetails(data.data);
+    }
+
+    useEffect(() => {
+        getDetails();
+    }, []);
+    if(details.length !== 0){
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -35,7 +53,7 @@ const Details = () => {
 
             <div class="container-xxl py-5 page-header position-relative mb-5">
                 <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">Details of <br /> ARTS & DRAWINGS</h1>
+                    <h1 class="display-2 text-white animated slideInDown mb-4">Details of <br /> {top}</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
@@ -47,14 +65,14 @@ const Details = () => {
             </div>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-                <p className='all-text' style={{ fontSize: '3em', fontWeight: '700' }}>Arts And Drawing</p>
+                <p className='all-text' style={{ fontSize: '3em', fontWeight: '700' }}>{sub}</p>
                 <div className="parent-div-wrap" style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
                     <div className="left-side-div" style={{ width: "76%" }}>
                         <video width="1000" height="600" controls onEnded={rewardPoint}>
-                            <source src="videos/file_example_MP4_480_1_5MG.mp4" type="video/mp4" />
+                            <source src={details[0].resources.video} type="video/mp4" />
                         </video>
-                        <p className='all-text' style={{ marginTop: "20px", fontSize: "2em" }}>Topic Name</p>
-                        <p style={{ fontSize: "1.25em", fontWeight: "500" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odit sint voluptatem ipsum magnam quia iste mollitia eius qui sequi blanditiis ab molestias nulla eos nihil deleniti cupiditate inventore possimus ratione, autem sed? Tenetur necessitatibus ex nostrum, reiciendis, porro hic temporibus voluptate ipsam voluptatem libero, quibusdam consequuntur omnis aliquam expedita!</p>
+                        <p className='all-text' style={{ marginTop: "20px", fontSize: "2em" }}>{top}</p>
+                        <p style={{ fontSize: "1.25em", fontWeight: "500" }}>{details[0].description}</p>
                     </div>
                     <div className="right-side-div" style={{ width: "20%", marginTop: "20px" }}>
                         <p className='all-text' style={{ fontSize: "2em" }}>Study Material</p>
@@ -144,6 +162,14 @@ const Details = () => {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
     )
+    }
+    else{
+        return(
+            <div>
+                Loading
+            </div>
+        )
+    }
 }
 
 export default Details
