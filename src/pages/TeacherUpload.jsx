@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const TeacherUpload = () => {
+
+    const [videoUrl, setVideoUrl] = useState("");
+
+    const handleVideoSelect = (event) => {
+        const videoFile = event.target.files[0];
+        const videoUrl = URL.createObjectURL(videoFile);
+        setVideoUrl(videoUrl);
+    };
+
+    const [pdfUrl, setPdfUrl] = useState("");
+
+    const handlePdfSelect = (event) => {
+        const pdfFile = event.target.files[0];
+        const pdfUrl = URL.createObjectURL(pdfFile);
+        setPdfUrl(pdfUrl);
+    };
+
     return (
         <div class="container-xxl bg-white p-0">
-
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
                 <a href="/teacherhome" class="navbar-brand">
@@ -49,11 +65,13 @@ const TeacherUpload = () => {
                     <div class="row">
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload Videos</label>
-                            <input type="file" class="form-control-file" accept="video/*" id="exampleFormControlFile1" />
+                            <input type="file" class="form-control-file" accept="video/*" onChange={handleVideoSelect} id="file-select" />
+                            {videoUrl && <video src={videoUrl} controls style={{ width: "100%", height: "300px" }} />}
                         </div>
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload PDF</label>
-                            <input type="file" class="form-control-file" accept="application/pdf,application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation" id="exampleFormControlFile1" />
+                            <input type="file" class="form-control-file" accept="application/pdf,application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation" onChange={handlePdfSelect} id="pdfInput" />
+                            {pdfUrl && <iframe src={pdfUrl} width="100%" height="300px" />}
                         </div>
                     </div>
 
@@ -62,7 +80,7 @@ const TeacherUpload = () => {
             </div>
 
 
-            
+
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5">
                     <div class="row g-5">

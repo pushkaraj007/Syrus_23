@@ -40,9 +40,17 @@ const Home = () => {
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" style={{ filter: "brightness(70%)" }} src="img/carousel-2.jpg" alt="Second slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style={{ fontWeight: "1000", fontSize: "4em" }} className="carousel-text">My Caption Title (2st Image)</h5>
+                                <p style={{ fontSize: "2em" }} className="carousel-text-desc">The whole caption will only show up if the screen is at least medium size.</p>
+                            </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" style={{ filter: "brightness(70%)" }} src="img/carousel-1.jpg" alt="Third slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style={{ fontWeight: "1000", fontSize: "4em" }} className="carousel-text">My Caption Title (3st Image)</h5>
+                                <p style={{ fontSize: "2em" }} className="carousel-text-desc">The whole caption will only show up if the screen is at least medium size.</p>
+                            </div>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -132,9 +140,9 @@ const Home = () => {
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                        <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Shree Samal</h6>
                                             <small>CEO & Founder</small>
                                         </div>
                                     </div>
@@ -144,13 +152,13 @@ const Home = () => {
                         <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="" />
+                                    <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpeg" alt="" />
                                 </div>
                                 <div class="col-6 text-start" >
-                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="" />
+                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpeg" alt="" />
                                 </div>
                                 <div class="col-6 text-end" >
-                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="" />
+                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpeg" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -197,7 +205,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Drawing</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Sparsh Verma</h6>
                                                 <small>Teacher</small>
@@ -236,7 +244,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">Mathematics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Shree Samal</h6>
                                                 <small>Teacher</small>
@@ -275,7 +283,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">Sciences</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Aaman Bhowmick</h6>
                                                 <small>Teacher</small>
@@ -314,7 +322,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">English</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user2.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Manali Bhave</h6>
                                                 <small>Teacher</small>
@@ -353,7 +361,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">History & Civics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user2.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Sanskruti</h6>
                                                 <small>Teacher</small>
@@ -392,7 +400,7 @@ const Home = () => {
                                     <a class="d-block text-center h3 mt-3 mb-4" href="">Geography & Economics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                            <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                             <div class="ms-3">
                                                 <h6 class="text-primary mb-1">Nilay Pophalkar</h6>
                                                 <small>Teacher</small>

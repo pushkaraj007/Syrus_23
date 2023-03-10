@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import TeacherAbout from "./pages/TeacherAbout";
+import TeacherClass from "./pages/TeacherClass";
 import TeacherHome from "./pages/TeacherHome";
 import TeacherUpload from "./pages/TeacherUpload";
 import Voice from "./pages/Voice";
@@ -26,7 +27,11 @@ function App() {
         <Route path="/teacherhome" element={<TeacherHome />} />
         <Route path="/teacherabout" element={<TeacherAbout />} />
         <Route path="/teacherupload" element={<TeacherUpload />} />
+
         <Route path="/voice" element={<Voice />} />
+
+        <Route path="/teacherclasses" element={<TeacherClass />} />
+
 
 
       </Routes>
