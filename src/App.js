@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import TeacherAbout from "./pages/TeacherAbout";
 import TeacherHome from "./pages/TeacherHome";
 import TeacherUpload from "./pages/TeacherUpload";
+import Voice from "./pages/Voice";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/teacherhome" element={<TeacherHome />} />
         <Route path="/teacherabout" element={<TeacherAbout />} />
         <Route path="/teacherupload" element={<TeacherUpload />} />
+        <Route path="/voice" element={<Voice />} />
 
 
       </Routes>
