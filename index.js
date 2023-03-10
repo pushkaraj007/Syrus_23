@@ -50,6 +50,18 @@ app.post("/upload", async (req, res) => {
   });
 });
 
+app.post("/details", async (req, res) => {
+  console.log(req.body);
+  topic.find(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ data, status: "ok" });
+    }
+  });
+});
+
 module.exports = app.listen(5000, () => {
   console.log("server started");
 });
