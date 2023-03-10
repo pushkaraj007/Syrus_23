@@ -3,11 +3,7 @@ import React, { useEffect, useState } from "react";
 const Home = () => {
     return (
         <div class="container-xxl bg-white p-0">
-        {/* <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style={{width: "3rem", height: "3rem"}} role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div> */}
+
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="index.html" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
@@ -19,8 +15,8 @@ const Home = () => {
                 <div class="navbar-nav mx-auto">
                     <a href="index.html" class="nav-item nav-link active">Home</a>
                     <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="classes.html" class="nav-item nav-link">Classes</a>
-                    <div class="nav-item dropdown">
+                    <a href="classes.html" class="nav-item nav-link">Class</a>
+                    {/* <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="facility.html" class="dropdown-item">School Facilities</a>
@@ -30,10 +26,12 @@ const Home = () => {
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>
-                    </div>
+                    </div> */}
+                    <a href="classes.html" class="nav-item nav-link">My Teachers</a>
+                    <a href="classes.html" class="nav-item nav-link">Gallery</a>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-user-circle ms-3"></i></a>
             </div>
         </nav>
         <div class="container-fluid p-0 mb-5">
@@ -45,17 +43,17 @@ const Home = () => {
       </ol>
       <div class="carousel-inner">
           <div class="carousel-item active">
-              <img class="d-block w-100" src="https://placeimg.com/1080/500/animals" alt="First slide"/>
+              <img class="d-block w-100" style={{ filter: "brightness(70%)"}} src="img/carousel-1.jpg" alt="First slide"/>
               <div class="carousel-caption d-none d-md-block">
-                  <h5>My Caption Title (1st Image)</h5>
-                  <p>The whole caption will only show up if the screen is at least medium size.</p>
+                  <h5 style={{fontWeight: "1000", fontSize: "4em"}} className="carousel-text">My Caption Title (1st Image)</h5>
+                  <p style={{fontSize: "2em"}} className="carousel-text-desc">The whole caption will only show up if the screen is at least medium size.</p>
               </div>
           </div>
           <div class="carousel-item">
-              <img class="d-block w-100" src="https://placeimg.com/1080/500/arch" alt="Second slide"/>
+              <img class="d-block w-100" style={{ filter: "brightness(70%)"}} src="img/carousel-2.jpg" alt="Second slide"/>
           </div>
           <div class="carousel-item">
-              <img class="d-block w-100" src="https://placeimg.com/1080/500/nature" alt="Third slide"/>
+              <img class="d-block w-100" style={{ filter: "brightness(70%)"}} src="img/carousel-1.jpg" alt="Third slide"/>
           </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -80,11 +78,11 @@ const Home = () => {
                         <div class="facility-item">
                             <div class="facility-icon bg-primary">
                                 <span class="bg-primary"></span>
-                                <i class="fa fa-bus-alt fa-3x text-primary"></i>
+                                <i class="fa fa-microphone fa-2x text-primary"></i>
                                 <span class="bg-primary"></span>
                             </div>
                             <div class="facility-text bg-primary">
-                                <h3 class="text-primary mb-3">School Bus</h3>
+                                <h3 class="text-primary mb-3">Voice Controls</h3>
                                 <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
                             </div>
                         </div>
@@ -93,11 +91,11 @@ const Home = () => {
                         <div class="facility-item">
                             <div class="facility-icon bg-success">
                                 <span class="bg-success"></span>
-                                <i class="fa fa-futbol fa-3x text-success"></i>
+                                <i class="fa fa-bullhorn fa-2x text-success"></i>
                                 <span class="bg-success"></span>
                             </div>
                             <div class="facility-text bg-success">
-                                <h3 class="text-success mb-3">Playground</h3>
+                                <h3 class="text-success mb-3">Text to Speech</h3>
                                 <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
                             </div>
                         </div>
@@ -106,11 +104,11 @@ const Home = () => {
                         <div class="facility-item">
                             <div class="facility-icon bg-warning">
                                 <span class="bg-warning"></span>
-                                <i class="fa fa-home fa-3x text-warning"></i>
+                                <i class="fa fa-globe fa-2x text-warning"></i>
                                 <span class="bg-warning"></span>
                             </div>
                             <div class="facility-text bg-warning">
-                                <h3 class="text-warning mb-3">Healthy Canteen</h3>
+                                <h3 class="text-warning mb-3">Multilingual Study Material</h3>
                                 <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
                             </div>
                         </div>
@@ -119,11 +117,11 @@ const Home = () => {
                         <div class="facility-item">
                             <div class="facility-icon bg-info">
                                 <span class="bg-info"></span>
-                                <i class="fa fa-chalkboard-teacher fa-3x text-info"></i>
+                                <i class="fa fa-handshake fa-2x text-info"></i>
                                 <span class="bg-info"></span>
                             </div>
                             <div class="facility-text bg-info">
-                                <h3 class="text-info mb-3">Positive Learning</h3>
+                                <h3 class="text-info mb-3">One to One Guidance</h3>
                                 <p class="mb-0">Eirmod sed ipsum dolor sit rebum magna erat lorem kasd vero ipsum sit</p>
                             </div>
                         </div>
@@ -171,7 +169,7 @@ const Home = () => {
             </div>
         </div>
        
-        <div class="container-xxl py-5">
+        {/* <div class="container-xxl py-5">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
@@ -192,12 +190,12 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
     
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" >
-                    <h1 class="mb-3">School Classes</h1>
+                    <h1 class="mb-3">My Subjects</h1>
                     <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                 </div>
                 <div class="row g-4">
@@ -212,29 +210,28 @@ const Home = () => {
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Sparsh Verma</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -247,34 +244,33 @@ const Home = () => {
                                 <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt=""/>
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Color Management</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Mathematics</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Shree Samal</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -284,37 +280,36 @@ const Home = () => {
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="classes-item">
                             <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-3.jpg" alt=""/>
+                                <img class="img-fluid rounded-circle" src="img/classes-3.png" alt=""/>
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Athletic & Dance</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Sciences</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt=""/>
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Aaman Bhowmick</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -324,37 +319,36 @@ const Home = () => {
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="classes-item">
                             <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-4.jpg" alt=""/>
+                                <img class="img-fluid rounded-circle" src="img/classes-4.jpeg" alt=""/>
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Language & Speaking</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">English</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Manali Bhave</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -364,37 +358,36 @@ const Home = () => {
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="classes-item">
                             <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                <img class="img-fluid rounded-circle" src="img/classes-5.jpg" alt=""/>
+                                <img class="img-fluid rounded-circle" src="img/classes-5.jpeg" alt=""/>
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">Religion & History</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">History & Civics</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Sanskruti</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -407,34 +400,33 @@ const Home = () => {
                                 <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt=""/>
                             </div>
                             <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                <a class="d-block text-center h3 mt-3 mb-4" href="">General Knowledge</a>
+                                <a class="d-block text-center h3 mt-3 mb-4" href="">Geography & Economics</a>
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <div class="d-flex align-items-center">
                                         <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Nilay Pophalkar</h6>
                                             <small>Teacher</small>
                                         </div>
                                     </div>
-                                    <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
                                 </div>
                                 <div class="row g-1">
                                     <div class="col-4">
                                         <div class="border-top border-3 border-primary pt-2">
-                                            <h6 class="text-primary mb-1">Age:</h6>
-                                            <small>3-5 Years</small>
+                                            <h6 class="text-primary mb-1">Videos:</h6>
+                                            <small>20 <span>videos</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-success pt-2">
-                                            <h6 class="text-success mb-1">Time:</h6>
-                                            <small>9-10 AM</small>
+                                            <h6 class="text-success mb-1">Materials:</h6>
+                                            <small>20 <span>pdfs</span></small>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="border-top border-3 border-warning pt-2">
-                                            <h6 class="text-warning mb-1">Capacity:</h6>
-                                            <small>30 Kids</small>
+                                            <h6 class="text-warning mb-1">Notices:</h6>
+                                            <small>2</small>
                                         </div>
                                     </div>
                                 </div>
@@ -445,7 +437,7 @@ const Home = () => {
             </div>
         </div>
       
-        <div class="container-xxl py-5">
+        {/* <div class="container-xxl py-5">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
@@ -499,9 +491,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
      
-        <div class="container-xxl py-5">
+        {/* <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" >
                     <h1 class="mb-3">Popular Teachers</h1>
@@ -553,9 +545,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
       
-        <div class="container-xxl py-5">
+        {/* <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" >
                     <h1 class="mb-3">Our Clients Say!</h1>
@@ -597,15 +589,15 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
        
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Get In Touch</h3>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Collector Colony, Chembur</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765 43210</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                         <div class="d-flex pt-2">
                             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
@@ -618,8 +610,6 @@ const Home = () => {
                         <h3 class="text-white mb-4">Quick Links</h3>
                         <a class="btn btn-link text-white-50" href="">About Us</a>
                         <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="">Our Services</a>
-                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
                         <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -650,7 +640,7 @@ const Home = () => {
                         <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                         <div class="position-relative mx-auto" >
                             <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email"/>
-                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                            <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Login</button>
                         </div>
                     </div>
                 </div>
@@ -660,16 +650,12 @@ const Home = () => {
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                             &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
-              
-              
-              Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
                                 <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
+                                <a href="">About Us</a>
+                                <a href="">Contact Us</a>
                             </div>
                         </div>
                     </div>

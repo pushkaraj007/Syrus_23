@@ -5,6 +5,7 @@ import Classes from "./pages/Classes";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import "./assets/css/style.css";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/login" element={<Login />} />
+
 
       </Routes>
     </BrowserRouter>
