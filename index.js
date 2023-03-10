@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 app.use(cors());
 app.use(express.json());
 const sendEmail = require("./utils/sendEmail");
+const topic = require("./models/topic");
 require("dotenv").config();
 
 mongoose.connect(
@@ -38,6 +39,16 @@ app.post("/login", async (req, res) => {
   }
 });
 
+app.post("/upload", async (req, res) => {
+  topic.create(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({data,status:"ok"});
+    }
+  });
+});
 
 module.exports = app.listen(5000, () => {
   console.log("server started");
