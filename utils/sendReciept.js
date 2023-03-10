@@ -3,12 +3,13 @@ var nodemailer = require('nodemailer');
 module.exports = async(usr)=>{
     try {
         var transporter = nodemailer.createTransport({
-            host: "smtp-relay.sendinblue.com",
-            port: 587,
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
             auth: {
-              user: "noreply.bookworm.mail@gmail.com",
-              pass: "xsmtpsib-3d50875ab57151148bc99dee3c6288d7371527270773fc1f8df489b0de2c4821-G4mOc3MXWavtHjfr"
-            }
+                user: process.env.USER,
+                pass: process.env.PASSWORD
+              }
           });
 
           var mailOptions = {

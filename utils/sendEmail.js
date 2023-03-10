@@ -1,13 +1,15 @@
 var nodemailer = require('nodemailer');
 
 module.exports = async(t,usr)=>{
+    console.log(usr.email)
     try {
         var transporter = nodemailer.createTransport({
-            host: "smtp-relay.sendinblue.com",
-            port: 587,
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true, // true for 465, false for other ports
             auth: {
-              user: "noreply.bookworm.mail@gmail.com",
-              pass: "mpKqLvZUJSCBgYIH"
+              user: process.env.USER,
+              pass: process.env.PASSWORD
             }
           });
 
@@ -212,6 +214,7 @@ module.exports = async(t,usr)=>{
           }
 
         await  transporter.sendMail(mailOptions);
+        console.log("email sent");
         return {status: "ok"};
     } catch (error) {
       console.log(error)
