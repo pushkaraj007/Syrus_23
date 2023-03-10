@@ -71,6 +71,7 @@ h1,
 h2,
 h3,
 h4,
+label,
 .h1,
 .h2,
 .h3,
@@ -82,7 +83,8 @@ h4,
 .display-5,
 .display-6,
 .carousel-text,
-.carousel-text-desc {
+.carousel-text-desc,
+.all-text {
     font-family: 'Lobster Two', cursive;
     font-weight: 700;
 }
