@@ -40,9 +40,17 @@ const Home = () => {
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" style={{ filter: "brightness(70%)" }} src="img/carousel-2.jpg" alt="Second slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style={{ fontWeight: "1000", fontSize: "4em" }} className="carousel-text">My Caption Title (2st Image)</h5>
+                                <p style={{ fontSize: "2em" }} className="carousel-text-desc">The whole caption will only show up if the screen is at least medium size.</p>
+                            </div>
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" style={{ filter: "brightness(70%)" }} src="img/carousel-1.jpg" alt="Third slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 style={{ fontWeight: "1000", fontSize: "4em" }} className="carousel-text">My Caption Title (3st Image)</h5>
+                                <p style={{ fontSize: "2em" }} className="carousel-text-desc">The whole caption will only show up if the screen is at least medium size.</p>
+                            </div>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
