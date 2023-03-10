@@ -1,23 +1,94 @@
 import React, { useState } from "react";
-
+import { storage } from '../firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useCookies } from 'react-cookie';
+var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
-
+    const [cookies] = useCookies('user');
+    if(!cookies.user){
+        window.location.href = '/login';
+    }
+  var bytes = CryptoJS.AES.decrypt(cookies.user, 'my-secret-key@123');
+  var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  const useremail = decryptedData.email;
+    var firebasevideo = "";
+    var firebasepdf = "";
     const [videoUrl, setVideoUrl] = useState("");
+    const [videoFile, setVideoFile] = useState("");
+    const [pdfFile, setPdfFile] = useState("");
+    const [topic, setTopic] = useState("");
+    const [description, setDescription] = useState("");
+    const [subject, setSubject] = useState("science");
+    const [standard, setStandard] = useState("3");
+    const [teacher, setTeacher] = useState(useremail);
+    async function uploadVideo() {
+        alert("Uploading Video")
+        if (!videoFile){
+            alert("videoFile is null");
+            return;
+        }
+        const videoref = ref(storage, `material/${standard}/${subject}/video/${topic}`);
+        uploadBytes(videoref, videoFile).then(() => {
+          getDownloadURL(videoref).then((url) => {
+            alert(`video url: ${url}`);
+            firebasevideo = url;
+            uploadPdf();
+          })
+        })
+      }
+    
+      async function uploadPdf() {
+        if (!pdfFile) return;
+        const pdfref = ref(storage, `material/${standard}/${subject}/resources/${topic}`);
+        uploadBytes(pdfref, pdfFile).then(() => {
+          getDownloadURL(pdfref).then((url) => {
+            firebasepdf = url;
+            alert("Upload Successfull");
+            submitData();
+          })
+        })
+      }
 
     const handleVideoSelect = (event) => {
-        const videoFile = event.target.files[0];
-        const videoUrl = URL.createObjectURL(videoFile);
+        const vid = event.target.files[0];
+        const videoUrl = URL.createObjectURL(vid);
         setVideoUrl(videoUrl);
     };
 
     const [pdfUrl, setPdfUrl] = useState("");
 
     const handlePdfSelect = (event) => {
-        const pdfFile = event.target.files[0];
-        const pdfUrl = URL.createObjectURL(pdfFile);
+        const p = event.target.files[0];
+        const pdfUrl = URL.createObjectURL(p);
         setPdfUrl(pdfUrl);
     };
-
+    function upload (e) {
+        e.preventDefault();
+        uploadVideo();
+    }
+    async function submitData() {
+        console.log('submit')
+        const res = await fetch('http://localhost:5000/upload', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            topic,
+            description,
+            subject,
+            standard,
+            teacher,
+            resources: {
+                video : firebasevideo,
+                pdf: firebasepdf
+            }
+          })
+        })
+    
+        const data = await res.json();
+        alert(data.status)
+      }
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -53,28 +124,28 @@ const TeacherUpload = () => {
 
             <div class="container-xxl py-5">
                 <p className='all-text' style={{ fontSize: "2.5em", textAlign: "center" }}>Upload Videos, Study Materials and Test</p>
-                <form>
+                <form onSubmit={upload}>
                     <div class="form-group">
                         <label for="exampleFormControlInput1" style={{ fontSize: "1.5em" }}>Topic Name</label>
-                        <input type="text" class="form-control" id="topic_name" placeholder="Addition" />
+                        <input type="text" class="form-control" id="topic_name" placeholder="Addition" onChange={(e) => {setTopic( e.target.value )}}/>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1" style={{ fontSize: "1.5em" }}>Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={(e) => {setDescription( e.target.value )}}></textarea>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload Videos</label>
-                            <input type="file" class="form-control-file" accept="video/*" onChange={handleVideoSelect} id="file-select" />
+                            <input type="file" class="form-control-file" accept="video/*" onChange={(e)=>{setVideoFile(e.target.files[0]);handleVideoSelect(e);}}  id="file-select" />
                             {videoUrl && <video src={videoUrl} controls style={{ width: "100%", height: "300px" }} />}
                         </div>
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload PDF</label>
-                            <input type="file" class="form-control-file" accept="application/pdf,application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation" onChange={handlePdfSelect} id="pdfInput" />
+                            <input type="file" class="form-control-file" accept="application/pdf,application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation" onChange={(e)=>{;setPdfFile(e.target.files[0]);handlePdfSelect(e)}} id="pdfInput" />
                             {pdfUrl && <iframe src={pdfUrl} width="100%" height="300px" />}
                         </div>
                     </div>
-
+                    <button type="submit">Submit</button>
                 </form>
 
             </div>
