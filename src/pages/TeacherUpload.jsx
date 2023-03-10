@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState } from "react";
 
 const TeacherUpload = () => {
+
+    const [videoUrl, setVideoUrl] = useState("");
+
+  const handleVideoSelect = (event) => {
+    const videoFile = event.target.files[0];
+    const videoUrl = URL.createObjectURL(videoFile);
+    setVideoUrl(videoUrl);
+  };
+
     return (
         <div class="container-xxl bg-white p-0">
-
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
                 <a href="/teacherhome" class="navbar-brand">
@@ -49,7 +57,8 @@ const TeacherUpload = () => {
                     <div class="row">
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload Videos</label>
-                            <input type="file" class="form-control-file" accept="video/*" id="exampleFormControlFile1" />
+                            <input type="file" class="form-control-file" accept="video/*" onChange={handleVideoSelect} id="file-select" />
+                            {videoUrl && <video src={videoUrl} controls style={{width: "100%"}} />}
                         </div>
                         <div class="col">
                             <label for="exampleFormControlFile1" style={{ fontSize: "1.5em" }}>Upload PDF</label>
