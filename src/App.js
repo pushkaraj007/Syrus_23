@@ -27,10 +27,16 @@ function App() {
         "go to home": () => {
           window.location.href = "/";
         },
+        "Home page": () => {
+          window.location.href = "/";
+        },
         "go to contact us": () => {
           window.location.href = "/contact";
         },
         "go to about us": () => {
+          window.location.href = "/about";
+        },
+        "about us page": () => {
           window.location.href = "/about";
         },
         "open arts and drawing": () => {
@@ -68,7 +74,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/teacherhome" element={<TeacherHome />} />
           <Route path="/teacherabout" element={<TeacherAbout />} />
-          <Route path="/teacherupload" element={<TeacherUpload />} />
+          <Route path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
           <Route path="/detailsartsanddraw" element={<Details />} />
 
           {/* <Route path="/voice" element={<Voice />} /> */}

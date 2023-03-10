@@ -54,8 +54,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
@@ -93,8 +93,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
@@ -132,8 +132,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
@@ -171,8 +171,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
@@ -210,8 +210,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
@@ -249,8 +249,8 @@ const TeacherClass = () => {
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Add</span>
-                                        <span class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</span>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">

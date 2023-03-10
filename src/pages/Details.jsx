@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Details = () => {
+
+    const [point, setPoint] = useState(0);
+
+    function rewardPoint() {
+        setPoint(point + 1);
+        console.log("Point rewarded! Total points: " + (point + 1));
+
+    }
+
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -37,19 +46,28 @@ const Details = () => {
                 </div>
             </div>
 
-            <div>
-                <p>Arts And Drawing</p>
-                <video >
-                    <source src="./file_example_MP4_480_1_5MG.mp4" type="video/mp4"/>
-                </video>
-                <p>Topic Name</p>
-                <p>Desc</p>
-                <p>Study Material</p>
-                <div>
-
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                <p className='all-text' style={{ fontSize: '3em', fontWeight: '700' }}>Arts And Drawing</p>
+                <div className="parent-div-wrap" style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                    <div className="left-side-div" style={{ width: "76%" }}>
+                        <video width="1000" height="600" controls onEnded={rewardPoint}>
+                            <source src="videos/file_example_MP4_480_1_5MG.mp4" type="video/mp4" />
+                        </video>
+                        <p className='all-text' style={{ marginTop: "20px", fontSize: "2em" }}>Topic Name</p>
+                        <p style={{ fontSize: "1.25em", fontWeight: "500" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis odit sint voluptatem ipsum magnam quia iste mollitia eius qui sequi blanditiis ab molestias nulla eos nihil deleniti cupiditate inventore possimus ratione, autem sed? Tenetur necessitatibus ex nostrum, reiciendis, porro hic temporibus voluptate ipsam voluptatem libero, quibusdam consequuntur omnis aliquam expedita!</p>
+                    </div>
+                    <div className="right-side-div" style={{ width: "20%", marginTop: "20px" }}>
+                        <p className='all-text' style={{ fontSize: "2em" }}>Study Material</p>
+                        <button style={{ width: "100%", height: "40px", color: "white", background: "#007bff", border: "none", borderRadius: "5px" }}>Open</button>
+                        <p className='all-text' style={{ fontSize: "2em", marginTop: "30px" }}>Any Doubts</p>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button style={{ width: "100%", marginTop: "10px", height: "40px", color: "white", background: "#007bff", border: "none", borderRadius: "5px" }}>Submit</button>
+                        <p className='all-text' style={{ fontSize: "2em", marginTop: "30px" }}>Your Total Stars:</p>
+                        <div className="stars-wrap" style={{display: "flex", width: "100%", justifyContent: "center"}}>
+                            <p className='all-text' id='stars-count' style={{ fontSize: "3em", textAlign: "center", width: "120px", height: "120px", border: "1px solid #007bff", borderRadius: "50%", display: "flex", justifyContent: "center", alignItems: "center" }}> {point}  <i class="fa fa-star" style={{ color: "gold", fontSize: "0.75em" }}></i></p>
+                        </div>
+                    </div>
                 </div>
-                <p>Any Doubts</p>
-                <input type="text" class="form-control" id="topic_name" placeholder="Addition" />
             </div>
 
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
