@@ -27,10 +27,16 @@ function App() {
         "go to home": () => {
           window.location.href = "/";
         },
+        "Home page": () => {
+          window.location.href = "/";
+        },
         "go to contact us": () => {
           window.location.href = "/contact";
         },
         "go to about us": () => {
+          window.location.href = "/about";
+        },
+        "about us page": () => {
           window.location.href = "/about";
         },
         "open arts and drawing": () => {
