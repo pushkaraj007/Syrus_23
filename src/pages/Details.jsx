@@ -58,6 +58,7 @@ const Details = () => {
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a></li>
                             <li class="breadcrumb-item"><a href="/classes">My Class</a></li>
+                            <li class="breadcrumb-item"><a href="/topiclist">Topic</a></li>
                             <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Details</li>
                         </ol>
                     </nav>

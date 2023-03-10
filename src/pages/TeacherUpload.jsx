@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useCookies } from 'react-cookie';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
     const { std,sub } = useParams();
@@ -92,7 +93,7 @@ const TeacherUpload = () => {
         alert(data.status)
       }
     return (
-        <div class="container-xxl bg-white p-0">
+        <div class="container-xxl bg-white p-0" className={style['style']}>
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
                 <a href="/teacherhome" class="navbar-brand">
@@ -147,7 +148,7 @@ const TeacherUpload = () => {
                             {pdfUrl && <iframe src={pdfUrl} width="100%" height="300px" />}
                         </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" style={{width: "100%", height: "40px", marginTop: "30px", border: "none", borderRadius: "5px", background: "#007bff", color: "white", fontWeight: "500"}}>Submit</button>
                 </form>
 
             </div>
