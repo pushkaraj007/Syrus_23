@@ -55,7 +55,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Drawing</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/detailsartsanddraw">Art & Drawing</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -75,7 +75,7 @@ export default function Classes() {
                                         <div class="col-4">
                                             <div class="border-top border-3 border-success pt-2">
                                                 <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
+                                                <small>20 <span>Pdfs</span></small>
                                             </div>
                                         </div>
                                         <div class="col-4">

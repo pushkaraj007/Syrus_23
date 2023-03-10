@@ -55,9 +55,9 @@ const About = () => {
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
+                                        <img class="rounded-circle flex-shrink-0" style={{width: "80px"}} src="img/user.png" alt="" />
                                         <div class="ms-3">
-                                            <h6 class="text-primary mb-1">Jhon Doe</h6>
+                                            <h6 class="text-primary mb-1">Shree Samal</h6>
                                             <small>CEO & Founder</small>
                                         </div>
                                     </div>
@@ -67,13 +67,13 @@ const About = () => {
                         <div class="col-lg-6 about-img wow fadeInUp" data-wow-delay="0.5s">
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpg" alt="" />
+                                    <img class="img-fluid w-75 rounded-circle bg-light p-3" src="img/about-1.jpeg" alt="" />
                                 </div>
                                 <div class="col-6 text-start" >
-                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpg" alt="" />
+                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-2.jpeg" alt="" />
                                 </div>
                                 <div class="col-6 text-end" >
-                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpg" alt="" />
+                                    <img class="img-fluid w-100 rounded-circle bg-light p-3" src="img/about-3.jpeg" alt="" />
                                 </div>
                             </div>
                         </div>
