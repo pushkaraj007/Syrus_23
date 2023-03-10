@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useCookies } from 'react-cookie';
+import { useParams } from 'react-router-dom';
+
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
+    const { std,sub } = useParams();
     const [cookies] = useCookies('user');
     if(!cookies.user){
         window.location.href = '/login';
@@ -18,8 +21,8 @@ const TeacherUpload = () => {
     const [pdfFile, setPdfFile] = useState("");
     const [topic, setTopic] = useState("");
     const [description, setDescription] = useState("");
-    const [subject, setSubject] = useState("science");
-    const [standard, setStandard] = useState("3");
+    const [subject, setSubject] = useState(sub);
+    const [standard, setStandard] = useState(std);
     const [teacher, setTeacher] = useState(useremail);
     async function uploadVideo() {
         alert("Uploading Video")

@@ -74,7 +74,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/teacherhome" element={<TeacherHome />} />
           <Route path="/teacherabout" element={<TeacherAbout />} />
-          <Route path="/teacherupload" element={<TeacherUpload />} />
+          <Route path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
           <Route path="/detailsartsanddraw" element={<Details />} />
 
           {/* <Route path="/voice" element={<Voice />} /> */}
