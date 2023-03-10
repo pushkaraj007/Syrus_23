@@ -1,4 +1,5 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
+
 import "./assets/css/style.css";
 import About from "./pages/About";
 import Appointment from "./pages/Appointment";
@@ -11,6 +12,7 @@ import TeacherAbout from "./pages/TeacherAbout";
 import TeacherClass from "./pages/TeacherClass";
 import TeacherHome from "./pages/TeacherHome";
 import TeacherUpload from "./pages/TeacherUpload";
+import TopicList from "./pages/TopicList";
 // import Voice from "./pages/Voice";
 
 const annyang = require("annyang");
@@ -53,8 +55,7 @@ function App() {
     <div>
       <div
         style={{
-          position: "float",
-          position: "sticky",
+          position: "fixed",
           zIndex: "10000",
           top: "20px",
           marginLeft: "20px",
@@ -76,6 +77,7 @@ function App() {
           <Route path="/teacherabout" element={<TeacherAbout />} />
           <Route path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
           <Route path="/detailsartsanddraw" element={<Details />} />
+          <Route path="/topiclist" element={<TopicList />} />
 
           {/* <Route path="/voice" element={<Voice />} /> */}
 

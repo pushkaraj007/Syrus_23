@@ -3,6 +3,7 @@ import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
+import style from "./TeacherUpload.module.css";
 
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
@@ -93,7 +94,7 @@ const TeacherUpload = () => {
         alert(data.status)
       }
     return (
-        <div class="container-xxl bg-white p-0">
+        <div class="container-xxl bg-white p-0" className={style['style']}>
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
                 <a href="/teacherhome" class="navbar-brand">
