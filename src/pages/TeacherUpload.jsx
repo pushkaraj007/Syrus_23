@@ -5,9 +5,9 @@ import { useCookies } from 'react-cookie';
 var CryptoJS = require("crypto-js");
 const TeacherUpload = () => {
     const [cookies] = useCookies('user');
-    // if(!cookies.user){
-    //     window.location.href = '/login';
-    // }
+    if(!cookies.user){
+        window.location.href = '/login';
+    }
   var bytes = CryptoJS.AES.decrypt(cookies.user, 'my-secret-key@123');
   var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
   const useremail = decryptedData.email;
@@ -145,7 +145,7 @@ const TeacherUpload = () => {
                             {pdfUrl && <iframe src={pdfUrl} width="100%" height="300px" />}
                         </div>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit" style={{width: "100%", height: "40px", marginTop: "30px", border: "none", borderRadius: "5px", background: "#007bff", color: "white", fontWeight: "500"}}>Submit</button>
                 </form>
 
             </div>
