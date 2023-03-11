@@ -1,6 +1,17 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react';
 
 const AdminManageStud = () => {
+    const [students, setStudents] = useState([]);
+    async function getStudents() {
+        let result = await fetch("http://localhost:5000/get/student");
+        result = await result.json();
+        console.log(result.data);
+        setStudents(result.data);
+    }
+    useEffect(() => {
+        getStudents();
+    }, []);
+    if(students.length !== 0) {
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -48,24 +59,19 @@ const AdminManageStud = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style={{fontSize: "1.25em"}}>Shree Samal</td>
-                        <td style={{fontSize: "1.25em"}}>9876543210</td>
-                        <td style={{fontSize: "1.25em"}}>shree.samal1502@gmail.com</td>
-                        <td style={{fontSize: "1.25em"}}>2</td>
-                        <td style={{fontSize: "1.25em"}}>20</td>
+                    {students.map((stud) =>  {
+                    return (
+                        <tr>
+                        <td style={{fontSize: "1.25em"}}>{stud.name}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.contact}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.email}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.course.standard}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.stars}</td>
                         <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/admin/addstudents">Edit</a></td>
                         <td style={{ textAlign: "center" }}><a className='btn btn-danger' href="">Delete</a></td>
-                    </tr>
-                    <tr>
-                        <td style={{fontSize: "1.25em"}}>Aaman Bhowmick</td>
-                        <td style={{fontSize: "1.25em"}}>9876543210</td>
-                        <td style={{fontSize: "1.25em"}}>aaman.bhowmick21@gmail.com</td>
-                        <td style={{fontSize: "1.25em"}}>2</td>
-                        <td style={{fontSize: "1.25em"}}>1</td>
-                        <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/admin/addstudents">Edit</a></td>
-                        <td style={{ textAlign: "center" }}><a className='btn btn-danger' href="">Delete</a></td>
-                    </tr>
+                    </tr>)
+                    })}
+                    
                 </tbody>
                 <tfoot>
                     <tr>
@@ -152,6 +158,14 @@ const AdminManageStud = () => {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
     )
+    }
+    else{
+        return(
+            <div>
+                <h1>Loading</h1>
+            </div>
+        )
+    }
 }
 
 export default AdminManageStud
