@@ -1,14 +1,31 @@
 import React, { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 
+
 const Details = () => {
     const { std,sub,top } = useParams();
     const [point, setPoint] = useState(0);
     const [details, setDetails] = useState([]);
+
+    // Star Pop up
+
+    const [videoEnded, setVideoEnd] = useState(false);
+    
+
     function rewardPoint() {
         setPoint(point + 1);
         console.log("Point rewarded! Total points: " + (point + 1));
-
+        setVideoEnd(true);
+        setTimeout(() => {
+            setVideoEnd(false);
+        }, 5000);
+    }
+    function PopUp(){
+        return(
+            <div className='popup' style={{textAlign: "center"}}>
+                <p className='all-text' style={{fontSize: "2.5em"}}><i className='fa fa-star' style={{color: "gold"}}></i> Congratulations!!! You won a Star!!!! <i className='fa fa-star' style={{color: "gold"}}></i> </p>
+            </div>
+        )
     }
 
     async function getDetails() {
@@ -72,6 +89,7 @@ const Details = () => {
                         <video width="1000" height="600" controls onEnded={rewardPoint}>
                             <source src={details[0].resources.video} type="video/mp4" />
                         </video>
+                        {videoEnded && <PopUp />}
                         <p className='all-text' style={{ marginTop: "20px", fontSize: "2em" }}>{top}</p>
                         <p style={{ fontSize: "1.25em", fontWeight: "500" }}>{details[0].description}</p>
                     </div>
