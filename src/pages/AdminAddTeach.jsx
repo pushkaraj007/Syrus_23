@@ -54,6 +54,11 @@ const AdminAddTeach = () => {
                             <input type="number" class="form-control" placeholder="9876543210" />
                         </div>
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1" style={{ fontSize: "1.5em" }}>Upload Image:</label>
+                        <input type="file" class="form-control" id="name" placeholder="" accept="image/*"/>
+                    </div>
 
                     <div class="row" style={{marginTop: "15px"}}>
                         <div class="col">
