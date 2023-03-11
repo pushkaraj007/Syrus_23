@@ -1,6 +1,26 @@
-import React from 'react'
-
+import React, { useEffect,useState } from 'react'
+import { useCookies } from 'react-cookie';
+var CryptoJS = require("crypto-js");
 const TeacherClass = () => {
+    const [cookies] = useCookies('user');
+    const [topics, setTopics] = useState([]);
+    if(!cookies.user){
+        window.location.href = '/login';
+    }
+  var bytes = CryptoJS.AES.decrypt(cookies.user, 'my-secret-key@123');
+  var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  const useremail = decryptedData.email;
+
+  async function getTopic(){
+    const res = await fetch(`http://localhost:5000/getteachercourses/${useremail}`);
+    const data = await res.json();
+    console.log(data);
+    setTopics(data.data);
+  }
+  useEffect(() => {
+    getTopic();
+  });
+  if(topics.length > 0){
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -41,240 +61,42 @@ const TeacherClass = () => {
                         <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
                     </div>
                     <div class="row g-4">
+                        {topics.map((topic) => {
+                            return(
                         <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="classes-item">
                                 <div class="bg-light rounded-circle w-75 mx-auto p-3">
                                     <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/teacherstopiclist">Art & Drawing</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/teacherstopiclist">{topic.subject}</a>
                                     <div class="d-flex align-items-center justify-content-center mb-4">
                                         <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
+                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: {topic.standard}</h6>
                                         </div>
                                     </div>
                                     <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
+                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href={`/teacherupload/${topic.standard}/${topic.subject}`}>Add</a>
                                         <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
                                     </div>
                                     <div class="row g-1" style={{marginTop: "20px"}}>
                                         <div class="col-4">
                                             <div class="border-top border-3 border-primary pt-2">
                                                 <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
+                                                <small>1 <span>videos</span></small>
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="border-top border-3 border-success pt-2">
                                                 <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
+                                                <small>1 <span>pdfs</span></small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="classes-item">
-                                <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                    <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="" />
-                                </div>
-                                <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/teacherstopiclist">Mathematics</a>
-                                    <div class="d-flex align-items-center justify-content-center mb-4">
-                                        <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
-                                        </div>
-                                    </div>
-                                    <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
-                                    </div>
-                                    <div class="row g-1" style={{marginTop: "20px"}}>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-primary pt-2">
-                                                <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-success pt-2">
-                                                <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="classes-item">
-                                <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                    <img class="img-fluid rounded-circle" src="img/classes-3.png" alt="" />
-                                </div>
-                                <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">Sciences</a>
-                                    <div class="d-flex align-items-center justify-content-center mb-4">
-                                        <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
-                                        </div>
-                                    </div>
-                                    <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
-                                    </div>
-                                    <div class="row g-1" style={{marginTop: "20px"}}>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-primary pt-2">
-                                                <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-success pt-2">
-                                                <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="classes-item">
-                                <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                    <img class="img-fluid rounded-circle" src="img/classes-4.jpeg" alt="" />
-                                </div>
-                                <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">English</a>
-                                    <div class="d-flex align-items-center justify-content-center mb-4">
-                                        <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
-                                        </div>
-                                    </div>
-                                    <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
-                                    </div>
-                                    <div class="row g-1" style={{marginTop: "20px"}}>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-primary pt-2">
-                                                <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-success pt-2">
-                                                <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="classes-item">
-                                <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                    <img class="img-fluid rounded-circle" src="img/classes-5.jpeg" alt="" />
-                                </div>
-                                <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">History & Civics</a>
-                                    <div class="d-flex align-items-center justify-content-center mb-4">
-                                        <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
-                                        </div>
-                                    </div>
-                                    <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
-                                    </div>
-                                    <div class="row g-1" style={{marginTop: "20px"}}>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-primary pt-2">
-                                                <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-success pt-2">
-                                                <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                            <div class="classes-item">
-                                <div class="bg-light rounded-circle w-75 mx-auto p-3">
-                                    <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="" />
-                                </div>
-                                <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">Geography & Economics</a>
-                                    <div class="d-flex align-items-center justify-content-center mb-4">
-                                        <div class="d-flex align-items-center" style={{textAlign: "center"}}>
-                                                <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
-                                        </div>
-                                    </div>
-                                    <div className="add-upload-btn" style={{display: "flex", width: "100%"}}>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="/teacherupload">Add</a>
-                                        <a class="bg-primary text-white rounded-pill py-2 px-5" style={{margin: "10px auto", cursor: "pointer"}} href="">Test</a>
-                                    </div>
-                                    <div class="row g-1" style={{marginTop: "20px"}}>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-primary pt-2">
-                                                <h6 class="text-primary mb-1">Videos:</h6>
-                                                <small>20 <span>videos</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-success pt-2">
-                                                <h6 class="text-success mb-1">Materials:</h6>
-                                                <small>20 <span>pdfs</span></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="border-top border-3 border-warning pt-2">
-                                                <h6 class="text-warning mb-1">Notices:</h6>
-                                                <small>2</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            )})}
                     </div>
                 </div>
             </div>
@@ -353,6 +175,14 @@ const TeacherClass = () => {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
     )
+  }
+  else{
+    return(
+      <div>
+        <h1>Loading</h1>
+      </div>
+    )
+  }
 }
 
 export default TeacherClass

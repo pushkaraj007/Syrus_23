@@ -1,6 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+var CryptoJS = require("crypto-js");
 
 const TopicList = () => {
+    const { subject } = useParams();
+    const [cookies] = useCookies('user');
+    const [topics, setTopics] = useState([]);
+    if(!cookies.user){
+        window.location.href = '/login';
+    }
+    var user;
+  var bytes = CryptoJS.AES.decrypt(cookies.user, 'my-secret-key@123');
+  var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+  var standard;
+  const useremail = decryptedData.email;
+
+  async function getUser(){
+    const res = await fetch(`http://localhost:5000/getUser/${useremail}`);
+    const data = await res.json();
+    user = data.data[0];
+    standard = user.course.standard;
+    console.log(standard, subject);
+    getTopic();
+  }
+
+  async function getTopic(){
+    const res = await fetch(`http://localhost:5000/getTopic/${user.course.standard}/${subject}`);
+    const data = await res.json();
+    console.log(data);
+    setTopics(data.data);
+  }
+
+  useEffect(() => {
+    getUser();
+  }, []);
+  if(topics.length > 0){
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -47,11 +82,15 @@ const TopicList = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style={{fontSize: "1.25em"}}>science chp1</td>
-                        <td style={{fontSize: "1.25em"}}>Manali Bhave</td>
-                        <td style={{textAlign: "center"}}><a className='btn btn-primary' href="/details/:std/:sub/:top">View</a></td>
-                    </tr>
+                {topics.map((stud) =>  {
+                    return (
+                        <tr>
+                        <td style={{fontSize: "1.25em"}}>{stud.topic}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.teacher}</td>
+                        <td style={{textAlign: "center"}}><a className='btn btn-primary' href={`/details/${stud.standard}/${subject}/${stud.topic}`}>View</a></td>
+                    </tr>)
+                    })}
+                    
                 </tbody>
                 <tfoot>
                     <tr>
@@ -136,6 +175,14 @@ const TopicList = () => {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
     )
+  }
+  else{
+    return(
+      <div>
+        <h1>loading...</h1>
+      </div>
+    )
+  }
 }
 
 export default TopicList

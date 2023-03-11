@@ -55,7 +55,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">Art & Drawing</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/Art & Drawing">Art & Drawing</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -94,7 +94,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">Mathematics</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/Mathematics">Mathematics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -133,7 +133,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-3.png" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">Sciences</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/Sciences">Sciences</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -172,7 +172,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-4.jpeg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">English</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/English">English</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -211,7 +211,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-5.jpeg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">History & Civics</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/History & Civics">History & Civics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
@@ -250,7 +250,7 @@ export default function Classes() {
                                     <img class="img-fluid rounded-circle" src="img/classes-6.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist">Geography & Economics</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/topiclist/Geography & Economics">Geography & Economics</a>
                                     <div class="d-flex align-items-center justify-content-between mb-4">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" />
