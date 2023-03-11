@@ -102,7 +102,7 @@ const AdminAddTeach = () => {
                     <div class="row">
                         <div class="col">
                             <label for="email" style={{ fontSize: "1.5em" }}>Email ID:</label>
-                            <input type="text" class="form-control" placeholder="First name" onChange={(e) => {setEmail( e.target.value )}}/>
+                            <input type="text" class="form-control" placeholder="aaman@gmail.com" onChange={(e) => {setEmail( e.target.value )}}/>
                         </div>
                         <div class="col">
                             <label for="number" style={{ fontSize: "1.5em" }}>Contact No.:</label>
@@ -118,22 +118,22 @@ const AdminAddTeach = () => {
                     <div class="row" style={{marginTop: "15px"}}>
                         <div class="col">
                             <label for="std" style={{ fontSize: "1.5em" }}>Standard:</label>
-                            <select class="form-control" id="standard_select" value="" onChange={(e) => {setStandard( e.target.value )}}>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                            <select class="form-control" id="standard_select" onChange={(e) => {setStandard( e.target.value )}}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                             </select>
                         </div>
                         <div class="col">
                             <label for="sub" style={{ fontSize: "1.5em" }}>Subject:</label>
-                            <select class="form-control" id="subject_select" value="" onChange={(e) => {setSubject( e.target.value )}}>
-                                <option>arts and drawing</option>
-                                <option>science</option>
-                                <option>mathematics</option>
-                                <option>english</option>
-                                <option>history and civics</option>
-                                <option>geography</option>
+                            <select class="form-control" id="subject_select" onChange={(e) => {setSubject( e.target.value )}}>
+                                <option value="Arts & Drawing">Arts & Drawing</option>
+                                <option value="Sciences">Sciences</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="English">English</option>
+                                <option value="History & Civics">History & Civics</option>
+                                <option value="Geography & Economics">Geography & Economics</option>
                             </select>
                         </div>
                     </div>

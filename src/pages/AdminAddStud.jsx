@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { storage } from '../firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 var CryptoJS = require("crypto-js");
@@ -13,30 +13,31 @@ const AdminAddStud = () => {
     const [password, setPassword] = useState("");
 
 
-      async function submitData(e) {
+    async function submitData(e) {
         e.preventDefault();
         console.log('submit')
         const res = await fetch('http://localhost:5000/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name,
-            password,
-            contact,
-            address,
-            email,
-            course: {
-                standard:standard,
-              },
-            role: "student"
-          })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name,
+                password,
+                contact,
+                address,
+                email,
+                course: {
+                    standard: standard,
+                },
+                role: "student",
+                stars: 0,
+            })
         })
-    
+
         const data = await res.json();
         alert(data.status)
-      }
+    }
 
     return (
         <div class="container-xxl bg-white p-0">
@@ -78,38 +79,38 @@ const AdminAddStud = () => {
                 <form onSubmit={submitData}>
                     <div class="form-group">
                         <label for="exampleFormControlInput1" style={{ fontSize: "1.5em" }}>Student's Full Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Aaman Alok Bhowmick" onChange={(e) => {setName( e.target.value )}} />
+                        <input type="text" class="form-control" id="name" placeholder="Manali Bhave" onChange={(e) => { setName(e.target.value) }} />
                     </div>
 
                     <div class="form-group">
                         <label for="email" style={{ fontSize: "1.5em" }}>Email ID:</label>
-                        <input type="text" class="form-control" placeholder="First name" onChange={(e) => {setEmail( e.target.value )}}/>
+                        <input type="text" class="form-control" placeholder="manali@gmail.com" onChange={(e) => { setEmail(e.target.value) }} />
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <label for="number" style={{ fontSize: "1.5em" }}>Contact No.:</label>
-                            <input type="number" class="form-control" placeholder="9876543210" onChange={(e) => {setContact( e.target.value )}}/>
+                            <input type="number" class="form-control" placeholder="9876543210" onChange={(e) => { setContact(e.target.value) }} />
                         </div>
                         <div class="col">
-                        <label for="std" style={{ fontSize: "1.5em" }}>Standard:</label>
-                            <select class="form-control" id="standard_select" value="" onChange={(e) => {setStandard( e.target.value )}}>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
+                            <label for="std" style={{ fontSize: "1.5em" }}>Standard:</label>
+                            <select class="form-control" id="standard_select" onChange={(e) => { setStandard(e.target.value) }}>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Address" style={{ fontSize: "1.5em", marginTop: "15px" }}>Address:</label>
-                        <textarea class="form-control" id="address" rows="3" onChange={(e) => {setAddress( e.target.value )}}></textarea>
+                        <textarea class="form-control" id="address" rows="3" onChange={(e) => { setAddress(e.target.value) }}></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="password" style={{ fontSize: "1.5em" }}>Password:</label>
-                        <input type="password" class="form-control" id="name" placeholder="name@123" onChange={(e) => {setPassword( e.target.value )}}/>
+                        <input type="password" class="form-control" id="name" placeholder="name@123" onChange={(e) => { setPassword(e.target.value) }} />
                     </div>
 
                     <button type="submit" style={{ width: "100%", height: "40px", marginTop: "15px", border: "none", borderRadius: "5px", background: "#007bff", color: "white", fontWeight: "500" }}>Submit</button>

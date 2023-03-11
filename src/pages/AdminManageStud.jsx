@@ -66,7 +66,7 @@ const AdminManageStud = () => {
                         <td style={{fontSize: "1.25em"}}>{stud.contact}</td>
                         <td style={{fontSize: "1.25em"}}>{stud.email}</td>
                         <td style={{fontSize: "1.25em"}}>{stud.course.standard}</td>
-                        <td style={{fontSize: "1.25em"}}>{stud.stars}</td>
+                        <td style={{fontSize: "1.25em"}}>{stud.star}</td>
                         <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/admin/addstudents">Edit</a></td>
                         <td style={{ textAlign: "center" }}><a className='btn btn-danger' href="">Delete</a></td>
                     </tr>)
