@@ -2,6 +2,11 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import "./assets/css/style.css";
 import About from "./pages/About";
+import AdminAddStud from "./pages/AdminAddStud";
+import AdminAddTeach from "./pages/AdminAddTeach";
+import AdminHome from "./pages/AdminHome";
+import AdminManageStud from "./pages/AdminManageStud";
+import AdminManageTeach from "./pages/AdminManageTeach";
 import Appointment from "./pages/Appointment";
 import Classes from "./pages/Classes";
 import Contact from "./pages/Contact";
@@ -11,6 +16,7 @@ import Login from "./pages/Login";
 import TeacherAbout from "./pages/TeacherAbout";
 import TeacherClass from "./pages/TeacherClass";
 import TeacherHome from "./pages/TeacherHome";
+import TeachersTopicList from "./pages/TeachersTopicList";
 import TeacherUpload from "./pages/TeacherUpload";
 
 import Test from "./pages/Test";
@@ -61,12 +67,12 @@ function App() {
         style={{
           position: "fixed",
           zIndex: "10000",
-          top: "20px",
+          bottom: "20px",
           marginLeft: "20px",
         }}
       >
-        <button onClick={voiceOn} style={{padding: "15px 15px", border: "none", background: "#007bff", borderRadius: "50%"}}>
-          <i class="fa fa-microphone" style={{fontSize: "25px", color: "white"}}></i>
+        <button onClick={voiceOn} style={{padding: "12px 12px", border: "none", background: "#007bff", borderRadius: "50%"}}>
+          <i class="fa fa-microphone" style={{width: "25px", height: "20px", color: "white"}}></i>
         </button>
       </div>
       <BrowserRouter>
@@ -82,8 +88,14 @@ function App() {
           <Route exact path="/teacherabout" element={<TeacherAbout />} />
           <Route exact path="/teacherupload/:std/:sub" element={<TeacherUpload />} />
           <Route exact path="/details/:std/:sub/:top" element={<Details />} />
+          <Route exact path="/adminhome" element={<AdminHome />} />
+          <Route exact path="/admin/addteachers" element={<AdminAddTeach />} />
+          <Route exact path="/admin/addstudents" element={<AdminAddStud />} />
+          <Route path="/adminmanageteachers" element={<AdminManageTeach />} />
+          <Route path="/adminmanagestudents" element={<AdminManageStud />} />
 
           <Route path="/topiclist" element={<TopicList />} />
+          <Route path="/teacherstopiclist" element={<TeachersTopicList />} />
 
 
           {/* <Route path="/voice" element={<Voice />} /> */}

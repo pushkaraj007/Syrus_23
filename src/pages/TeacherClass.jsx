@@ -47,7 +47,7 @@ const TeacherClass = () => {
                                     <img class="img-fluid rounded-circle" src="img/classes-1.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">Art & Drawing</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/teacherstopiclist">Art & Drawing</a>
                                     <div class="d-flex align-items-center justify-content-center mb-4">
                                         <div class="d-flex align-items-center" style={{textAlign: "center"}}>
                                                 <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>
@@ -86,7 +86,7 @@ const TeacherClass = () => {
                                     <img class="img-fluid rounded-circle" src="img/classes-2.jpg" alt="" />
                                 </div>
                                 <div class="bg-light rounded p-4 pt-5 mt-n5">
-                                    <a class="d-block text-center h3 mt-3 mb-4" href="">Mathematics</a>
+                                    <a class="d-block text-center h3 mt-3 mb-4" href="/teacherstopiclist">Mathematics</a>
                                     <div class="d-flex align-items-center justify-content-center mb-4">
                                         <div class="d-flex align-items-center" style={{textAlign: "center"}}>
                                                 <h6 class="text-primary mb-1" style={{fontSize: "1.5em", fontWeight: "bolder"}}>Standard: IV</h6>

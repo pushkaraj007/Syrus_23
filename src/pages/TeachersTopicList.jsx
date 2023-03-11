@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TopicList = () => {
+const TeachersTopicList = () => {
     return (
         <div class="container-xxl bg-white p-0">
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-                <a href="/" class="navbar-brand">
+                <a href="/teacherhome" class="navbar-brand">
                     <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>EduAbled</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -13,12 +13,10 @@ const TopicList = () => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="/about" class="nav-item nav-link">About Us</a>
-                        <a href="/classes" class="nav-item nav-link">Class</a>
-                        <a href="classes.html" class="nav-item nav-link">My Teachers</a>
-                        <a href="classes.html" class="nav-item nav-link">Gallery</a>
-                        <a href="/contact" class="nav-item nav-link">Contact Us</a>
+                        <a href="/teacherhome" class="nav-item nav-link">Home</a>
+                        <a href="/teacherabout" class="nav-item nav-link">About Us</a>
+                        <a href="/teacherclasses" class="nav-item nav-link active">Class</a>
+                        <a href="/teachercontact" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-user-circle ms-3"></i></a>
                 </div>
@@ -26,38 +24,39 @@ const TopicList = () => {
 
             <div class="container-xxl py-5 page-header position-relative mb-5">
                 <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">Topics of <br /> ARTS & DRAWINGS</h1>
+                    <h1 class="display-2 text-white animated slideInDown mb-4">Topics List</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/classes">My Class</a></li>
-                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Topics</li>
+                            <li class="breadcrumb-item"><a href="/teacherhome">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/teacherclasses">Classes</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Topic List</li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
+
             <p className='all-text' style={{ fontSize: "3em", textAlign: "center" }}>Topic List</p>
             <table id="example" class="table table-striped table-bordered" style={{ width: "100%" }}>
                 <thead>
                     <tr>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Topic Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Teacher's Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Details</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Topic Name</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Edit</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style={{fontSize: "1.25em"}}>science chp1</td>
-                        <td style={{fontSize: "1.25em"}}>Manali Bhave</td>
-                        <td style={{textAlign: "center"}}><a className='btn btn-primary' href="/details/:std/:sub/:top">View</a></td>
+                        <td style={{ fontSize: "1.25em" }}>science chp1</td>
+                        <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/teacherupload/:std/:sub">Edit</a></td>
+                        <td style={{ textAlign: "center" }}><a className='btn btn-danger' href="/teacherupload/:std/:sub">Delete</a></td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Topic Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Teacher's Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Details</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Topic Name</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Edit</th>
+                        <th className='all-text' style={{ fontSize: "1.5em" }}>Delete</th>
                     </tr>
                 </tfoot>
             </table>
@@ -138,4 +137,4 @@ const TopicList = () => {
     )
 }
 
-export default TopicList
+export default TeachersTopicList

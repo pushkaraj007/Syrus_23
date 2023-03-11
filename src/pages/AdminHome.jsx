@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-const TeacherHome = () => {
+const AdminHome = () => {
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -13,17 +13,17 @@ const TeacherHome = () => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="/teacherhome" class="nav-item nav-link active">Home</a>
-                        <a href="/teacherabout" class="nav-item nav-link">About Us</a>
-                        <a href="/teacherclasses" class="nav-item nav-link">Class</a>
-                        <a href="/teachercontact" class="nav-item nav-link">Contact Us</a>
+                        <a href="/adminhome" class="nav-item nav-link active">Home</a>
+                        <a href="/adminabout" class="nav-item nav-link">About Us</a>
+                        <a href="/admin/addteachers" class="nav-item nav-link">Add Teachers</a>
+                        <a href="/admin/addstudents" class="nav-item nav-link">Add Students</a>
                     </div>
                     <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-user-circle ms-3"></i></a>
                 </div>
             </nav>
             <div class="container-xxl py-5 page-header position-relative mb-5">
                 <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">Welcome Teacher</h1>
+                    <h1 class="display-2 text-white animated slideInDown mb-4">Welcome Admin</h1>
                 </div>
             </div>
 
@@ -129,6 +129,28 @@ const TeacherHome = () => {
                 </div>
             </div>
 
+            <h1 class="mb-4" className='all-text' style={{textAlign: "center", margin: "20px auto", fontSize: "3em"}}>Manage</h1>
+            <div class="row" style={{marginTop: "30px", marginBottom: "100px"}}>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" className='all-text' style={{textAlign: "center", fontSize: "1.75em"}}>Manage Teachers</h5>
+                            <p class="card-text" style={{fontWeight: "500"}}>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod, commodi.</p>
+                            <a href="/adminmanageteachers" style={{width: "100%"}} class="btn btn-primary">Open</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" className='all-text' style={{textAlign: "center", fontSize: "1.75em"}}>Manage Students</h5>
+                            <p class="card-text" style={{fontWeight: "500"}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, repudiandae.</p>
+                            <a href="/adminmanagestudents" style={{width: "100%"}} class="btn btn-primary">Open</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5">
@@ -137,7 +159,7 @@ const TeacherHome = () => {
                             <h3 class="text-white mb-4">Get In Touch</h3>
                             <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Collector Colony, Chembur</p>
                             <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765 43210</p>
-                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>eduabled@gmail.com</p>
                             <div class="d-flex pt-2">
                                 <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -147,8 +169,7 @@ const TeacherHome = () => {
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h3 class="text-white mb-4">Quick Links</h3>
-                            <a class="btn btn-link text-white-50" href="/about">About Us</a>
-                            <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+                            <a class="btn btn-link text-white-50" href="/adminabout">About Us</a>
                             <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
                         </div>
                         <div class="col-lg-3 col-md-6">
@@ -188,13 +209,12 @@ const TeacherHome = () => {
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                                &copy; <a class="border-bottom" href="#">EduAbled</a>, All Right Reserved.
                             </div>
                             <div class="col-md-6 text-center text-md-end">
                                 <div class="footer-menu">
-                                    <a href="/">Home</a>
-                                    <a href="/about">About Us</a>
-                                    <a href="/contact">Contact Us</a>
+                                    <a href="/adminhome">Home</a>
+                                    <a href="/adminabout">About Us</a>
                                 </div>
                             </div>
                         </div>
@@ -204,5 +224,6 @@ const TeacherHome = () => {
             <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
     )
-};
-export default TeacherHome;
+}
+
+export default AdminHome

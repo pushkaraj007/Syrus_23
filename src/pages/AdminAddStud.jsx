@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TopicList = () => {
+const AdminAddStud = () => {
     return (
         <div class="container-xxl bg-white p-0">
 
             <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-                <a href="/" class="navbar-brand">
+                <a href="/teacherhome" class="navbar-brand">
                     <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>EduAbled</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -13,12 +13,10 @@ const TopicList = () => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="/about" class="nav-item nav-link">About Us</a>
-                        <a href="/classes" class="nav-item nav-link">Class</a>
-                        <a href="classes.html" class="nav-item nav-link">My Teachers</a>
-                        <a href="classes.html" class="nav-item nav-link">Gallery</a>
-                        <a href="/contact" class="nav-item nav-link">Contact Us</a>
+                        <a href="/adminhome" class="nav-item nav-link">Home</a>
+                        <a href="/adminabout" class="nav-item nav-link">About Us</a>
+                        <a href="/admin/addteachers" class="nav-item nav-link">Add Teachers</a>
+                        <a href="/admin/addstudents" class="nav-item nav-link active">Add Students</a>
                     </div>
                     <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-user-circle ms-3"></i></a>
                 </div>
@@ -26,41 +24,62 @@ const TopicList = () => {
 
             <div class="container-xxl py-5 page-header position-relative mb-5">
                 <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">Topics of <br /> ARTS & DRAWINGS</h1>
+                    <h1 class="display-2 text-white animated slideInDown mb-4">Add Students</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/classes">My Class</a></li>
-                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Topics</li>
+                            <li class="breadcrumb-item"><a href="/adminhome">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Add or Edit Students</li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
-            <p className='all-text' style={{ fontSize: "3em", textAlign: "center" }}>Topic List</p>
-            <table id="example" class="table table-striped table-bordered" style={{ width: "100%" }}>
-                <thead>
-                    <tr>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Topic Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Teacher's Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style={{fontSize: "1.25em"}}>science chp1</td>
-                        <td style={{fontSize: "1.25em"}}>Manali Bhave</td>
-                        <td style={{textAlign: "center"}}><a className='btn btn-primary' href="/details/:std/:sub/:top">View</a></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Topic Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Teacher's Name</th>
-                        <th className='all-text' style={{fontSize: "1.5em"}}>Details</th>
-                    </tr>
-                </tfoot>
-            </table>
+
+            <div class="container-xxl py-5">
+                <p className='all-text' style={{ fontSize: "2.5em", textAlign: "center" }}>Add/Edit Students</p>
+
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1" style={{ fontSize: "1.5em" }}>Student's Full Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Aaman Alok Bhowmick" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" style={{ fontSize: "1.5em" }}>Email ID:</label>
+                        <input type="text" class="form-control" placeholder="First name" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="number" style={{ fontSize: "1.5em" }}>Contact No.:</label>
+                            <input type="number" class="form-control" placeholder="9876543210" />
+                        </div>
+                        <div class="col">
+                        <label for="std" style={{ fontSize: "1.5em" }}>Standard:</label>
+                            <select class="form-control" id="standard_select" value="">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Address" style={{ fontSize: "1.5em", marginTop: "15px" }}>Address:</label>
+                        <textarea class="form-control" id="address" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" style={{ fontSize: "1.5em" }}>Password:</label>
+                        <input type="password" class="form-control" id="name" placeholder="name@123" />
+                    </div>
+
+                    <button type="submit" style={{ width: "100%", height: "40px", marginTop: "15px", border: "none", borderRadius: "5px", background: "#007bff", color: "white", fontWeight: "500" }}>Submit</button>
+                </form>
+
+            </div>
+
 
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5">
@@ -69,7 +88,7 @@ const TopicList = () => {
                             <h3 class="text-white mb-4">Get In Touch</h3>
                             <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Collector Colony, Chembur</p>
                             <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 98765 43210</p>
-                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>eduabled@gmail.com</p>
                             <div class="d-flex pt-2">
                                 <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                                 <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -79,8 +98,7 @@ const TopicList = () => {
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h3 class="text-white mb-4">Quick Links</h3>
-                            <a class="btn btn-link text-white-50" href="/about">About Us</a>
-                            <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+                            <a class="btn btn-link text-white-50" href="/adminabout">About Us</a>
                             <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
                         </div>
                         <div class="col-lg-3 col-md-6">
@@ -120,13 +138,12 @@ const TopicList = () => {
                     <div class="copyright">
                         <div class="row">
                             <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                                &copy; <a class="border-bottom" href="#">EduAbled</a>, All Right Reserved.
                             </div>
                             <div class="col-md-6 text-center text-md-end">
                                 <div class="footer-menu">
-                                    <a href="/">Home</a>
-                                    <a href="/about">About Us</a>
-                                    <a href="/contact">Contact Us</a>
+                                    <a href="/adminhome">Home</a>
+                                    <a href="/adminabout">About Us</a>
                                 </div>
                             </div>
                         </div>
@@ -138,4 +155,4 @@ const TopicList = () => {
     )
 }
 
-export default TopicList
+export default AdminAddStud
