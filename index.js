@@ -85,6 +85,39 @@ app.get("/get/:type", async (req, res) => {
   });
 });
 
+app.get("/getUser/:email", async (req, res) => {
+  user.find({ email: req.params.email }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ data, status: "ok" });
+    }
+  });
+});
+
+app.get("/getTopic/:std/:sub", async (req, res) => {
+  topic.find({ standard: req.params.std, subject: req.params.sub }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ data, status: "ok" });
+    }
+  });
+});
+
+app.get("/getteachercourses/:id", async (req, res) => {
+  topic.find({ teacher: req.params.id }, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ data, status: "ok" });
+    }
+  });
+});
+
 module.exports = app.listen(5000, () => {
   console.log("server started");
 });
