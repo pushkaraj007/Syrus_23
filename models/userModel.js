@@ -19,11 +19,23 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please provide a contact number"],
   },
-  courses: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Courses",
-    required: false
-  }]
+  course: {
+    standard: {
+      type: String,
+    },
+    subject: {
+      type: String,
+    }
+  },
+  role: {
+    type: String,
+  },
+  profile: {
+    type: String,
+  },
+  address: {
+    type: String,
+  }
 });
 
 const User = mongoose.model("User", userSchema);

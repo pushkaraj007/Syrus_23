@@ -24,6 +24,10 @@ const topicSchema = new mongoose.Schema({
     },
     teacher: {
     type: String,
+    },
+    stars: {
+    type: Number,
+    default: 0,
     }
 });
 

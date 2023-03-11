@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 const sendEmail = require("./utils/sendEmail");
 const topic = require("./models/topic");
+const user = require("./models/userModel");
 require("dotenv").config();
 
 mongoose.connect(
@@ -53,6 +54,28 @@ app.post("/upload", async (req, res) => {
 app.post("/details", async (req, res) => {
   console.log(req.body);
   topic.find(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ data, status: "ok" });
+    }
+  });
+});
+
+app.post("/register", async (req, res) => {
+  user.create(req.body, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.json({ status: "error" });
+    } else {
+      res.json({ status: "ok" });
+    }
+  });
+});
+
+app.get("/get/:type", async (req, res) => {
+  user.find({ role: req.params.type }, (err, data) => {
     if (err) {
       console.log(err);
       res.json({ status: "error" });
