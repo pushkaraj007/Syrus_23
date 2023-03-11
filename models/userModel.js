@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
   },
   address: {
     type: String,
+  },
+  star: {
+    type: Number,
+    default: 0,
   }
 });
 
