@@ -87,6 +87,9 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
+                <p className='all-text' style={{ fontSize: '3em', fontWeight: '700', textAlign: "center" }}>FAQ Section</p>
+                <p style={{ fontSize: "1.5em", marginTop: "30px", fontWeight: "500" }}>Question: </p>
+                <p style={{ fontSize: "1.5em", fontWeight: "500" }}>Answer: </p>
             </div>
 
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">

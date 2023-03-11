@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TeachersTopicList = () => {
+const TeacherUploadAns = () => {
     return (
         <div class="container-xxl bg-white p-0">
 
@@ -13,9 +13,9 @@ const TeachersTopicList = () => {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav mx-auto">
-                        <a href="/teacherhome" class="nav-item nav-link">Home</a>
+                        <a href="/teacherhome" class="nav-item nav-link active">Home</a>
                         <a href="/teacherabout" class="nav-item nav-link">About Us</a>
-                        <a href="/teacherclasses" class="nav-item nav-link active">Class</a>
+                        <a href="/teacherclasses" class="nav-item nav-link">Class</a>
                         <a href="/teachercontact" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-user-circle ms-3"></i></a>
@@ -24,45 +24,28 @@ const TeachersTopicList = () => {
 
             <div class="container-xxl py-5 page-header position-relative mb-5">
                 <div class="container py-5">
-                    <h1 class="display-2 text-white animated slideInDown mb-4">Topics List</h1>
+                    <h1 class="display-2 text-white animated slideInDown mb-4">Answer FAQ</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/teacherhome">Home</a></li>
                             <li class="breadcrumb-item"><a href="/teacherclasses">Classes</a></li>
-                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Topic List</li>
+                            <li class="breadcrumb-item"><a href="/teacherclasses">Topic List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" style={{ color: "black" }}>Answer FAQ</li>
                         </ol>
                     </nav>
                 </div>
             </div>
 
-
-            <p className='all-text' style={{ fontSize: "3em", textAlign: "center" }}>Topic List</p>
-            <table id="example" class="table table-striped table-bordered" style={{ width: "100%" }}>
-                <thead>
-                    <tr>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Topic Name</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>FAQ</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Edit</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style={{ fontSize: "1.25em" }}>science chp1</td>
-                        <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/teacherfaqans">Answer Them</a></td>
-                        <td style={{ textAlign: "center" }}><a className='btn btn-primary' href="/teacherupload/:std/:sub">Edit</a></td>
-                        <td style={{ textAlign: "center" }}><a className='btn btn-danger' href="/teacherupload/:std/:sub">Delete</a></td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Topic Name</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>FAQ</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Edit</th>
-                        <th className='all-text' style={{ fontSize: "1.5em" }}>Delete</th>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="container-xxl py-5">
+                <p className='all-text' style={{ fontSize: "2.5em", textAlign: "center" }}>Answer The Doubts</p>
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1" style={{ fontSize: "1.5em" }}>Question: </label>
+                        <input type="text" class="form-control" id="answer" placeholder="Answer" />
+                    </div>
+                    <button type="submit" style={{ width: "100%", height: "40px", marginTop: "15px", border: "none", borderRadius: "5px", background: "#007bff", color: "white", fontWeight: "500" }}>Post Answer</button>
+                </form>
+            </div>
 
             <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
                 <div class="container py-5">
@@ -140,4 +123,4 @@ const TeachersTopicList = () => {
     )
 }
 
-export default TeachersTopicList
+export default TeacherUploadAns

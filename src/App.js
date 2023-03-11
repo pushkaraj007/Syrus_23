@@ -18,6 +18,7 @@ import TeacherClass from "./pages/TeacherClass";
 import TeacherHome from "./pages/TeacherHome";
 import TeachersTopicList from "./pages/TeachersTopicList";
 import TeacherUpload from "./pages/TeacherUpload";
+import TeacherUploadAns from "./pages/TeacherUploadAns";
 
 import Test from "./pages/Test";
 
@@ -97,7 +98,7 @@ function App() {
           <Route path="/topiclist" element={<TopicList />} />
           <Route path="/teacherstopiclist" element={<TeachersTopicList />} />
 
-
+          <Route exact path="/teacherfaqans" element={<TeacherUploadAns />} />
           {/* <Route path="/voice" element={<Voice />} /> */}
 
           <Route path="/teacherclasses" element={<TeacherClass />} />
