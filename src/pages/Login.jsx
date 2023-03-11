@@ -33,7 +33,15 @@ export default function Login() {
       if(data.status==='ok'){
         alert('Login Successful')
         handle()
+        if(data.role==='admin'){
+        window.location.href = '/adminhome';
+        }
+        else if(data.role==='student'){
         window.location.href = '/';
+        }
+        else{
+        window.location.href = '/teacherhome';
+        }
       }
       else{
         alert(data.status)

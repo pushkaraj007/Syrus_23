@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
-
+import { useCookies } from 'react-cookie';
+var CryptoJS = require("crypto-js");
 const Home = () => {
+    const [cookies] = useCookies('user');
+    const [topics, setTopics] = useState([]);
+    if(!cookies.user){
+        window.location.href = '/login';
+    }
     return (
         <div class="container-xxl bg-white p-0">
 
