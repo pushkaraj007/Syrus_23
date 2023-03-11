@@ -31,7 +31,7 @@ app.post("/login", async (req, res) => {
         },
         "secret123"
       );
-      return res.status(200).json({ status: "ok", user: token });
+      return res.status(200).json({ status: "ok", user: token,role:user.role });
     } else {
       return res.status(300).json({ status: "Invalid Password", user: null });
     }
