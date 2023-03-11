@@ -18,7 +18,8 @@ const AdminAddTeach = () => {
         alert("Uploading Image")
         if (!image){
             alert("imageFile is null");
-            return;
+            submitData();
+            return
         }
         const videoref = ref(storage, `images/${email}`);
         uploadBytes(videoref, image).then(() => {

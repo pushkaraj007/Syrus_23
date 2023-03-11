@@ -46,15 +46,22 @@ function App() {
         "go to contact us": () => {
           window.location.href = "/contact";
         },
+        "contact us": () => {
+          window.location.href = "/contact";
+        },
         "go to about us": () => {
           window.location.href = "/about";
         },
-        "about us page": () => {
+        "about us": () => {
           window.location.href = "/about";
         },
-        "open arts and drawing": () => {
-          window.location.href = "/detailsartsanddraw";
+        "go to class": () => {
+          window.location.href = "/classes";
         },
+        "class": () => {
+          window.location.href = "/classes";
+        },
+        
       };
 
       annyang.addCommands(commands);
