@@ -95,7 +95,7 @@ function App() {
           <Route path="/adminmanageteachers" element={<AdminManageTeach />} />
           <Route path="/adminmanagestudents" element={<AdminManageStud />} />
 
-          <Route path="/topiclist" element={<TopicList />} />
+          <Route path="/topiclist/:subject" element={<TopicList />} />
           <Route path="/teacherstopiclist" element={<TeachersTopicList />} />
 
           <Route exact path="/teacherfaqans" element={<TeacherUploadAns />} />
